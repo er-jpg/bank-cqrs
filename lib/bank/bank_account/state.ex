@@ -1,4 +1,4 @@
-defmodule Bank.BankAccountState do
+defmodule Bank.BankAccount.State do
   use Incident.AggregateState,
     aggregate: Bank.BankAccount,
     initial_state: %{

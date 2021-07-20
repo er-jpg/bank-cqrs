@@ -1,7 +1,7 @@
 defmodule Bank.BankAccount do
   @behaviour Incident.Aggregate
 
-  alias Bank.BankAccountState
+  alias Bank.BankAccount.State
   alias Bank.Commands.OpenAccount
   alias Bank.Events.AccountOpened
 
@@ -10,7 +10,7 @@ defmodule Bank.BankAccount do
 
   @impl true
   def execute(%OpenAccount{aggregate_id: aggregate_id}) do
-    case BankAccountState.get(aggregate_id) do
+    case State.get(aggregate_id) do
       %{account_number: nil} = state ->
         new_event = %AccountOpened{
           aggregate_id: aggregate_id,

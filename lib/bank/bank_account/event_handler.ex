@@ -1,4 +1,4 @@
-defmodule Bank.BankAccountEventHandler do
+defmodule Bank.BankAccount.EventHandler do
   @behaviour Incident.EventHandler
 
   alias Bank.Projections.BankAccount
