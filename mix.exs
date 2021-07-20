@@ -20,7 +20,8 @@ defmodule Bank.MixProject do
 
   defp deps do
     [
-      {:incident, "~> 0.6.0"}
+      {:incident, "~> 0.6.0"},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 end
