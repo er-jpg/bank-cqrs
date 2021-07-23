@@ -1,18 +1,18 @@
 defmodule Bank do
-  @moduledoc """
-  Documentation for `Bank`.
-  """
+  @moduledoc false
 
-  @doc """
-  Hello world.
+  alias Bank.BankAccount.CommandHandler
+  alias Bank.Projections.BankAccount
 
-  ## Examples
+  defdelegate receive_command(command),
+    to: CommandHandler,
+    as: :receive
 
-      iex> Bank.hello()
-      :world
+  defdelegate get_projection(module \\ BankAccount, account_number),
+    to: Incident.ProjectionStore,
+    as: :get
 
-  """
-  def hello do
-    :world
-  end
+  defdelegate get_all_events(account_number),
+    to: Incident.EventStore,
+    as: :get
 end
